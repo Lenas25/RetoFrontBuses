@@ -1,0 +1,13 @@
+
+.main{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  height: 100vh;
+  background-color: #F5F5F5;
+  gap: 20px;
+  h1{
+    font-size: 2rem;
+    color: #333;
+  }
+}
