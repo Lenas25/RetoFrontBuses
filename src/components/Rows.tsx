@@ -5,8 +5,13 @@ import s from "./Table.module.css"
 const Rows = ({ data, baseUrl }: { data: Data; baseUrl: string }) => {
 
   const handleInfo = async (id: number) => {
+    
+    const token = localStorage.getItem("token");
     try {
-      const result = await fetch(`${baseUrl}/${id}`, { method: "GET" });
+      const result = await fetch(`${baseUrl}/${id}`, { method: "GET",
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
+        }, });
       const response = await result.json();
       const message = response.is_active ? `Numero de Bus: ${response.numeroBus}\nPlaca: ${response.placa}\nCaracteristica: ${response.caracteristicas}\nMarca: ${response.marcaData.nombre}` : "No esta activo";
       alert(message);
